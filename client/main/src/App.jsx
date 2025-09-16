@@ -1,34 +1,35 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./index.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+   <div>
+    <div className="flex justify-between p-4 w-full">
+      <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-800 to-orange-600 bg-clip-text text-transparent hover:from-amber-700 hover:to-orange-500 transition-all duration-300">Swapverse</h1>
+      <div className='flex gap-x-8 sm:gap-x-6 pt-2 pr-3'>
+         <a className='text-sm font-semibold text-amber-900 sm:text-lg' href='#'>About</a>
+         <a className='text-sm font-semibold text-amber-900 sm:text-lg' href='#'>Login/Signup</a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
+    <div className='flex flex-col sm:flex-row gap-2 justify-center items-center mt-32 sm:mt-20'>
+      <span className='text-6xl font-bold bg-gradient-to-r from-amber-900 via-orange-700 to-yellow-600 bg-clip-text text-transparent leading-tight sm:text-8xl'>
+        Swipe.
+      </span>
+       <span className='text-6xl font-bold bg-gradient-to-r from-amber-900 via-orange-700 to-yellow-600 bg-clip-text text-transparent leading-tight sm:text-8xl'>
+        Swap.
+      </span>
+       <span className='text-6xl font-bold bg-gradient-to-r from-amber-900 via-orange-700 to-yellow-600 bg-clip-text text-transparent leading-tight sm:text-8xl'>
+        Read.
+      </span>
+       <span className='text-6xl font-bold bg-gradient-to-r from-amber-900 via-orange-700 to-yellow-600 bg-clip-text text-transparent leading-tight sm:text-8xl'>
+        Repeat.
+      </span>
+    </div>
+  </div>
+
+
   )
 }
 
