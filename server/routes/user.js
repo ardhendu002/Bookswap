@@ -1,6 +1,7 @@
 const {Router} = require('express');
 const router = Router();
 const {User,Book,Swap,Swiperequest,Review,CreditsLog} = require('../db');
+const bycrypt = require('bycryptjs');
 const userMiddleware = require('../middlewares/user');
 const jwt = require('jsonwebtoken');
 const axios = require('axios');
@@ -14,17 +15,18 @@ router.post('/signup', async (req, res) => {
     try{
         const {name,email,password,lat,lon,interest} = req.body;
         const existinguser = await User.findOne({
-            email: email,
-            password: password
+            email: email
         });
         if (existinguser){
             return res.status(400).json({error: "User already exists"});
         }
         else{
+          const salt = await bycrypt.genSalt(10);
+          const hashedPassword = await bycrypt.hash(password,salt);
             await User.create({
                 name:name,
                 email:email,
-                password:password,
+                password:hashedPassword,
                 Location: {lat: lat, lon: lon},
                 credits: 0,
                 interest: [],
@@ -431,7 +433,7 @@ function getDistance(lat1, lon1, lat2, lon2) {
 
 router.get('/nearest-safespot', userMiddleware, async(req,res)=>{
     try {
-    const { lat, lon, query = "library" } = req.query;
+    const { lat, lon } = req.query;
 
     if (!lat || !lon) {
       return res.status(400).json({ error: "Latitude and longitude required" });
@@ -470,13 +472,22 @@ router.get('/nearest-safespot', userMiddleware, async(req,res)=>{
   }
 });
 
+//get personalized book recomendations based on user interest and books added by user
+router.get('/personalized-recomendations', userMiddleware,async(req,res)=>{
+  try{
+    const {userId} = req.res.query;
+    const userDoc = await User.findById(userId);
+    if(!userDoc)
+    {
+       return res.status(400).json({error: "User not find"});
+    }
+    const interests = UserDoc.interest;
+    const userBooks = await Book.find({userId: userId});
+  }
+  catch(err){
 
-
-
-
-
-
-
+  }
+})
 
 
 module.exports = router;
