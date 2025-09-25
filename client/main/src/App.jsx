@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 const Home = lazy(() => import('./pages/home.jsx'));
 const Login = lazy(() => import('./pages/login.jsx'));
 const Signup = lazy(() => import('./pages/signup.jsx'));
+const Userface = lazy(() => import('./pages/userface.jsx'));
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/userface" element={<Userface></Userface>}></Route>
         </Routes>
       </Suspense>
     
