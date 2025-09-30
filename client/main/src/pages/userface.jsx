@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import backdrop from "../assets/backdrop.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "../components/navbar";
 
 
 function userface(){
@@ -9,11 +10,8 @@ function userface(){
     <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-amber-100 via-orange-100 to-yellow-200 p-8">
         <div className="max-w-6xl mx-auto">
             {/* Header */}
-            <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold text-orange-500">Swapverse</h1>
-            <button>
-                <FontAwesomeIcon icon={faBars} className="3xl pr-4"></FontAwesomeIcon>
-            </button>
+            <div className="flex items-center mb-8">
+            <Navbar></Navbar>
             </div>
 
             {/* Main Hero Section  */}
