@@ -6,6 +6,7 @@ const Login = lazy(() => import('./pages/login.jsx'));
 const Signup = lazy(() => import('./pages/signup.jsx'));
 const Userface = lazy(() => import('./pages/userface.jsx'));
 const Swipetoswap = lazy(() => import('./pages/swipetoswap.jsx'));
+const Profile = lazy(() => import('./pages/profile.jsx'));
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/userface" element={<Userface></Userface>}></Route>
           <Route path="/swipetoswap" element={<Swipetoswap></Swipetoswap>}></Route>
+          <Route path="/profile" element={<Profile></Profile>}></Route>
         </Routes>
       </Suspense>
     
